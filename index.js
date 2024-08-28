@@ -5,7 +5,6 @@ dotenv.config({ path: "./config.env" });
 
 const app = express();
 
-// Importera och använd rätt routers
 const movieRouter = require("./routes/movies");
 const animalRouter = require("./routes/animals");
 

@@ -1,11 +1,13 @@
+const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 
-const express = require("express");
-const animalsRouter = require("./routes/animals");
-
 const app = express();
+
+// Importera och använd rätt routers
+const movieRouter = require("./routes/movies");
+const animalRouter = require("./routes/animals");
 
 const DB = process.env.DATABASE.replace(
   "<db_password>",
@@ -24,7 +26,8 @@ mongoose
 app.use(express.json());
 
 // Definiera rutter
-app.use("/animal", animalsRouter);
+app.use("/movies", movieRouter);
+app.use("/animals", animalRouter);
 
 // Grundläggande ruta för testning
 app.get("/", (request, response) => {
